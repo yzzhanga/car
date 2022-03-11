@@ -3,7 +3,7 @@
 from time import sleep
 import RPi.GPIO as GPIO
 
-point = [12,13,25,26]
+point = [5,6,25,26]
 
 class L298nOrder:
     
