@@ -7,7 +7,8 @@ point = [5,6,16,26]
 
 class L298nOrder:
     
-    def __init__(self) -> print("指令集初始化成功"):
+    def __init__(self):
+        print("指令集初始化成功")
         GPIO.setmode(GPIO.BCM)
         GPIO.cleanup   
         GPIO.setup(point,GPIO.OUT)
