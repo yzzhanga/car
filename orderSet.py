@@ -52,11 +52,11 @@ class order:
         _order.allBack(True)
         print ("执行指令:后退")
     
-    def turnleft(self):
+    def turnright(self):
         _order.rightMove(True)
         print ("执行指令:左转")
 
-    def turnright(self):
+    def turnleft(self):
         _order.leftMove(True)
         print ("执行指令:右转")
 

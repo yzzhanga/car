@@ -10,6 +10,25 @@ def fire():
     order.forword()
     sleep(2)
     order.stop()
+    
+    order.backword()
+    sleep(2)
+    order.stop()
+    
+    order.turnright()
+    sleep(2)
+    order.stop()
 
+    order.turnleft()
+    sleep(2)
+    order.stop()
+    
+    order.backleft()
+    sleep(2)
+    order.stop()
+
+    order.backright()
+    sleep(2)
+    order.stop()
 
 fire()
