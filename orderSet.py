@@ -3,73 +3,82 @@
 from time import sleep
 import RPi.GPIO as GPIO
 
-point = [5,6,16,26]
+# POINT = [5,6,16,26]
+LEFT_FRONT_FPORT = [26,17]
+LEFT_BACK_FPORT = [27,22]
+RIGHT_FRONT_PORT = [18,23]
+RIGHT_BACK_PORT = [24,25]
+
+GPIO.setwarnings(False)
 
 class L298nOrder:
     
     def __init__(self):
         print("指令集初始化成功")
         GPIO.setmode(GPIO.BCM)
-        GPIO.cleanup   
-        GPIO.setup(point,GPIO.OUT)
-        pass
+        GPIO.setup(LEFT_FRONT_FPORT,GPIO.OUT)
+        GPIO.setup(LEFT_BACK_FPORT,GPIO.OUT)
+        GPIO.setup(RIGHT_FRONT_PORT,GPIO.OUT)
+        GPIO.setup(RIGHT_BACK_PORT,GPIO.OUT)
 
-    def leftMove(self,bool):
-        GPIO.output(point[0],bool)
-    def leftBack(self,bool):
-        GPIO.output(point[1],bool)
+    def turnLeftRound(self,leftBool):
+        if (leftBool):
+            GPIO.output(LEFT_FRONT_FPORT[0],True)
+            GPIO.output(LEFT_FRONT_FPORT[1],False)
+            GPIO.output(RIGHT_BACK_PORT[0],False)
+            GPIO.output(RIGHT_BACK_PORT[1],True)
+            print ("执行指令:左转向")
+        else:
+            GPIO.output(LEFT_FRONT_FPORT[0],False)
+            GPIO.output(LEFT_FRONT_FPORT[1],True)
+            GPIO.output(RIGHT_BACK_PORT[0],True)
+            GPIO.output(RIGHT_BACK_PORT[1],False)
+            print ("执行指令:左转倒车")
 
-    def rightMove(self,bool):
-        GPIO.output(point[2],bool)
+    def turnRightRound(self,rightBool):
+        if (rightBool):
+            GPIO.output(RIGHT_FRONT_PORT[0],True)
+            GPIO.output(RIGHT_FRONT_PORT[1],False)
+            GPIO.output(LEFT_BACK_FPORT[0],False)
+            GPIO.output(LEFT_BACK_FPORT[1],True)
+            print ("执行指令:右转向")
+        else:
+            GPIO.output(RIGHT_FRONT_PORT[0],False)
+            GPIO.output(RIGHT_FRONT_PORT[1],True)
+            GPIO.output(LEFT_BACK_FPORT[0],True)
+            GPIO.output(LEFT_BACK_FPORT[1],False)
+            print ("执行指令:右转倒车")
 
-    def rightBack(self,bool):
-        GPIO.output(point[3],bool)
-
-    def allMove(self,_isMove):
-       GPIO.output(point[0],_isMove)
-       GPIO.output(point[2],_isMove)
-    
-    def allBack(self,_isMove):
-        GPIO.output(point[1],_isMove)
-        GPIO.output(point[3],_isMove)
-  
-_order = L298nOrder()
-
-class order:
-   
-    #指令方法
-    def stop(self):
-        _order.allMove(False)
-        _order.allBack(False)
-        print ("执行指令:停止")
-
-
-    def forword(self):
-        _order.allMove(True)
+    def allMove(self):
+        GPIO.output(LEFT_FRONT_FPORT[0],True)
+        GPIO.output(LEFT_FRONT_FPORT[1],False)
+        GPIO.output(LEFT_BACK_FPORT[0],True)
+        GPIO.output(LEFT_BACK_FPORT[1],False)
+        GPIO.output(RIGHT_FRONT_PORT[0],True)
+        GPIO.output(RIGHT_FRONT_PORT[1],False)
+        GPIO.output(RIGHT_BACK_PORT[0],True)
+        GPIO.output(RIGHT_BACK_PORT[1],False)
         print ("执行指令:前进")
 
-    def backword(self):
-        _order.allBack(True)
+    def allBack(self):
+        GPIO.output(LEFT_FRONT_FPORT[0],False)
+        GPIO.output(LEFT_FRONT_FPORT[1],True)
+        GPIO.output(LEFT_BACK_FPORT[0],False)
+        GPIO.output(LEFT_BACK_FPORT[1],True)
+        GPIO.output(RIGHT_FRONT_PORT[0],False)
+        GPIO.output(RIGHT_FRONT_PORT[1],True)
+        GPIO.output(RIGHT_BACK_PORT[0],False)
+        GPIO.output(RIGHT_BACK_PORT[1],True)
         print ("执行指令:后退")
-    
-    def turnright(self):
-        _order.rightMove(True)
-        print ("执行指令:左转")
 
-    def turnleft(self):
-        _order.leftMove(True)
-        print ("执行指令:右转")
-
-    def backleft(self):
-        _order.rightBack(True)
-        print ("执行指令:左退")
-
-    def backright(self):
-        _order.leftBack(True)
-        print ("执行指令:右退")
-
-
-        
-      
-
+    def stop(self):
+        GPIO.output(LEFT_FRONT_FPORT[0],False)
+        GPIO.output(LEFT_FRONT_FPORT[1],False)
+        GPIO.output(LEFT_BACK_FPORT[0],False)
+        GPIO.output(LEFT_BACK_FPORT[1],False)
+        GPIO.output(RIGHT_FRONT_PORT[0],False)
+        GPIO.output(RIGHT_FRONT_PORT[1],False)
+        GPIO.output(RIGHT_BACK_PORT[0],False)
+        GPIO.output(RIGHT_BACK_PORT[1],False)
+        print ("执行指令:停止")
 
