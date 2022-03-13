@@ -21,6 +21,10 @@ class L298nOrder:
         GPIO.setup(RIGHT_FRONT_PORT,GPIO.OUT)
         GPIO.setup(RIGHT_BACK_PORT,GPIO.OUT)
 
+    def destory():
+        print("指令驱动销毁")
+        GPIO.cleanup()
+
     def turnLeftRound(leftBool):
         if (leftBool):
             GPIO.output(LEFT_FRONT_FPORT[0],True)
