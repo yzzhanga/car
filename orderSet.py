@@ -13,7 +13,7 @@ GPIO.setwarnings(False)
 
 class L298nOrder:
     
-    def __init__(self):
+    def __init__():
         print("指令集初始化成功")
         GPIO.setmode(GPIO.BCM)
         GPIO.setup(LEFT_FRONT_FPORT,GPIO.OUT)
@@ -21,7 +21,7 @@ class L298nOrder:
         GPIO.setup(RIGHT_FRONT_PORT,GPIO.OUT)
         GPIO.setup(RIGHT_BACK_PORT,GPIO.OUT)
 
-    def turnLeftRound(self,leftBool):
+    def turnLeftRound(leftBool):
         if (leftBool):
             GPIO.output(LEFT_FRONT_FPORT[0],True)
             GPIO.output(LEFT_FRONT_FPORT[1],False)
@@ -35,7 +35,7 @@ class L298nOrder:
             GPIO.output(RIGHT_BACK_PORT[1],False)
             print ("执行指令:左转倒车")
 
-    def turnRightRound(self,rightBool):
+    def turnRightRound(rightBool):
         if (rightBool):
             GPIO.output(RIGHT_FRONT_PORT[0],True)
             GPIO.output(RIGHT_FRONT_PORT[1],False)
@@ -49,7 +49,7 @@ class L298nOrder:
             GPIO.output(LEFT_BACK_FPORT[1],False)
             print ("执行指令:右转倒车")
 
-    def allMove(self):
+    def allMove():
         GPIO.output(LEFT_FRONT_FPORT[0],True)
         GPIO.output(LEFT_FRONT_FPORT[1],False)
         GPIO.output(LEFT_BACK_FPORT[0],True)
@@ -60,7 +60,7 @@ class L298nOrder:
         GPIO.output(RIGHT_BACK_PORT[1],False)
         print ("执行指令:前进")
 
-    def allBack(self):
+    def allBack():
         GPIO.output(LEFT_FRONT_FPORT[0],False)
         GPIO.output(LEFT_FRONT_FPORT[1],True)
         GPIO.output(LEFT_BACK_FPORT[0],False)
@@ -71,7 +71,7 @@ class L298nOrder:
         GPIO.output(RIGHT_BACK_PORT[1],True)
         print ("执行指令:后退")
 
-    def stop(self):
+    def stop():
         GPIO.output(LEFT_FRONT_FPORT[0],False)
         GPIO.output(LEFT_FRONT_FPORT[1],False)
         GPIO.output(LEFT_BACK_FPORT[0],False)
