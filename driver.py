@@ -4,6 +4,7 @@ from time import sleep
 import orderSet
 
 order = orderSet.L298nOrder
+order.setup()
 def test():
     print("执行指令")
     order.allMove()

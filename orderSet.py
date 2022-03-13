@@ -13,7 +13,7 @@ GPIO.setwarnings(False)
 
 class L298nOrder:
     
-    def __init__():
+    def setup():
         print("指令集初始化成功")
         GPIO.setmode(GPIO.BCM)
         GPIO.setup(LEFT_FRONT_FPORT,GPIO.OUT)
