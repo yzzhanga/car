@@ -3,8 +3,11 @@
 from time import sleep
 import orderSet
 
+#加载指令集
 order = orderSet.L298nOrder
+#装载GPIO输出初始化
 order.setup()
+#底盘自检程序
 def test():
     print("执行指令")
     order.allMove()
@@ -31,7 +34,7 @@ def test():
     order.turnRightRound(False)
     sleep(2)
     order.stop()
-
+#自检程序执行
 test()
 
 
