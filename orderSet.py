@@ -18,10 +18,10 @@ class L298nOrder:
     def setup():
         print("指令集初始化成功")
         GPIO.setmode(GPIO.BCM)
-        GPIO.setup(LEFT_FRONT_PORT,GPIO.OUT)
-        GPIO.setup(LEFT_BACK_PORT,GPIO.OUT)
-        GPIO.setup(RIGHT_FRONT_PORT,GPIO.OUT)
-        GPIO.setup(RIGHT_BACK_PORT,GPIO.OUT)
+        GPIO.setup(LEFT_FRONT_PORT,GPIO.OUT,GPIO.LOW)
+        GPIO.setup(LEFT_BACK_PORT,GPIO.OUT,GPIO.LOW)
+        GPIO.setup(RIGHT_FRONT_PORT,GPIO.OUT,GPIO.LOW)
+        GPIO.setup(RIGHT_BACK_PORT,GPIO.OUT,GPIO.LOW)
 
     #关闭GPIO的输出设置（这里有个前提是GPIO全部服务本集合，右可能会误关闭其他GPIO组合程序）
     def destory():
