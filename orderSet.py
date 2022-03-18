@@ -5,7 +5,7 @@ import RPi.GPIO as GPIO
 
 # POINT = [5,6,16,26]
 # GPIO接口结合
-LEFT_FRONT_PORT = [26,17] #左前轮 正负输出，这两个输出互斥，不能同时为正，但可以同时为负，不管同时为正或负，都视为刹车；
+LEFT_FRONT_PORT = [10,17] #左前轮 正负输出，这两个输出互斥，不能同时为正，但可以同时为负，不管同时为正或负，都视为刹车；
 LEFT_BACK_PORT = [27,22] #左后轮
 RIGHT_FRONT_PORT = [18,23] #右前轮
 RIGHT_BACK_PORT = [24,25] #右后轮
