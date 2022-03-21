@@ -94,3 +94,30 @@ class L298nOrder:
         GPIO.output(self.RIGHT_BACK_PORT[1],False)
         print ("执行指令:停止")
 
+    def opt(self,_inputOrder):
+        retval = 1;
+        # _inputOrder = input('请输入底盘指令:w-前进,s-后退,a-向左,d-向右,z-左倒车,c-右倒车,x-刹车,p-销毁终止指令:')
+        if (_inputOrder == "w"):
+            self.stop()
+            self.allMove()
+        if (_inputOrder == "s"):
+            self.stop()
+            self.allBack()
+        if (_inputOrder == "a"):
+            self.stop()
+            self.turnLeftRound(False)
+        if (_inputOrder == "d"):
+            self.stop()
+            self.turnRightRound(False)
+        if (_inputOrder == "z"):
+            self.stop()
+            self.turnLeftRound(True)
+        if (_inputOrder == "c"):
+            self.stop()
+            self.turnRightRound(True)
+        if (_inputOrder == "x"):
+            self.stop()
+        if (_inputOrder == "p"):
+            self.destory()
+            retval =0
+        return retval
