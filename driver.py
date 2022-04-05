@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 # -*- coding: UTF-8 -*-
+import time
+
 from orderSetv2 import L298nOrder
 from communication import mqutils
 import threading
@@ -28,6 +30,7 @@ class UltrasonicThread(threading.Thread):
             dis = self.sonic.get_distance()
             if (dis<0.1):
                 order.setting()
+            time.sleep(1)
 
 orderThread = OrderThread()
 orderThread.start()
