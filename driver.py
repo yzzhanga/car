@@ -5,7 +5,7 @@ import time
 from orderSetv2 import L298nOrder
 from communication import mqutils
 import threading
-import ultrasonic
+from ultrasonic import Ultrasonic
 #加载指令集
 order =L298nOrder([26,19],[13,10],[21,20], [16,12])
 redis =mqutils(host='mq.yzzhanga.xyz', port= 46379, password= '1qaz2wsx', db= 0)
@@ -24,13 +24,16 @@ class OrderThread (threading.Thread):
 class UltrasonicThread(threading.Thread):
     def __init__(self):
         threading.Thread.__init__(self)
-        self.sonic = ultrasonic(17,27)
+
     def run(self):
+        sonic = Ultrasonic(17, 27)
         while True:
-            dis = self.sonic.get_distance()
-            if (dis<0.1):
+            dis = sonic.get_distance()
+            if (dis<2):
                 order.setting()
             time.sleep(1)
+
+# class infraredThread(threading.Thread)
 
 orderThread = OrderThread()
 orderThread.start()
