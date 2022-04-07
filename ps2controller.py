@@ -1,5 +1,7 @@
 import time
 import RPi.GPIO as gpio
+import logging
+logging.getLogger().setLevel(logging.INFO)
 
 PSB_SELECT = 1
 PSB_L3 = 2
@@ -151,8 +153,8 @@ class PS2KEY:
 
 ps = PS2KEY(12,16,20,21)
 while True:
-    print(ps.ps2_red())
-    print(ps.ps2_read())
+    logging.info(ps.ps2_red())
+    logging.info(ps.ps2_read())
     key = ps.ps2_key()
-    print("按键读数：%d", key)
+    logging.info("按键读数：%d", key)
     time.sleep(1)

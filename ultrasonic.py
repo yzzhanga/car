@@ -3,8 +3,9 @@
 
 import RPi.GPIO as GPIO
 import time
+import logging
 
-
+logging.getLogger().setLevel(logging.INFO)
 class Ultrasonic:
 
     def __init__(self, trig, echo):
@@ -35,6 +36,6 @@ class Ultrasonic:
 
 def test():
     test = Ultrasonic(17,27)
-    print(test.get_distance())
+    logging.info(test.get_distance())
     pass
 test()
