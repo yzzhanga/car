@@ -4,23 +4,26 @@
 import RPi.GPIO as GPIO
 import logging
 #针对麦克纳姆轮进行了指令改良，增加了侧平移，原地转向和斜向移动，增加了小车的灵活性
+logging.basicConfig(format='%(asctime)s  - %(levelname)s:%(message)s', level=logging.INFO)
 logging.getLogger().setLevel(logging.INFO)
 
 class L298nOrder:
-    # LEFT_FRONT_PORT  #左前轮 正负输出，这两个输出互斥，不能同时为正，但可以同时为负，不管同时为正或负，都视为刹车；
-    # LEFT_BACK_PORT #左后轮
-    # RIGHT_FRONT_PORT #右前轮
-    # RIGHT_BACK_PORT  #右后轮
 
     def __init__(self,  lp,   lb, rp, rb):
         self.LEFT_FRONT_PORT = lp
         self.LEFT_BACK_PORT = lb
         self.RIGHT_FRONT_PORT = rp
         self.RIGHT_BACK_PORT = rb
-
         self.setup()
         self.setting()
-        logging.info("指令集初始化成功")
+        logging.info("底盘指令集初始化成功")
+
+    def __destroy__(self):
+        GPIO.cleanup(self.LEFT_FRONT_PORT)
+        GPIO.cleanup(self.LEFT_BACK_PORT)
+        GPIO.cleanup(self.RIGHT_FRONT_PORT)
+        GPIO.cleanup(self.RIGHT_BACK_PORT)
+        logging.info("底盘输出端口已复位")
 
     #设置针脚的初始状态
     def setup(self):

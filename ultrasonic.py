@@ -5,6 +5,7 @@ import RPi.GPIO as GPIO
 import time
 import logging
 
+logging.basicConfig(format='%(asctime)s  - %(levelname)s:%(message)s', level=logging.INFO)
 logging.getLogger().setLevel(logging.INFO)
 class Ultrasonic:
 
@@ -15,6 +16,12 @@ class Ultrasonic:
         GPIO.setwarnings(False)
         GPIO.setup(echo, GPIO.IN)
         GPIO.setup(trig, GPIO.OUT)
+        logging.info("超声波检测模块初始化完成")
+
+    def __destroy__(self):
+        GPIO.cleanup(self.ECHO)
+        GPIO.cleanup(self.TRIG)
+        logging.info("超声波输出端口已复位")
 
     def get_distance(self):
         send_time = 0

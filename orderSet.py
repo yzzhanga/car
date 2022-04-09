@@ -2,7 +2,7 @@
 # -*- coding: UTF-8 -*-
 import RPi.GPIO as GPIO
 import logging
-
+logging.basicConfig(format='%(asctime)s  - %(levelname)s:%(message)s', level=logging.INFO)
 logging.getLogger().setLevel(logging.INFO)
 class L298nOrder:
     # LEFT_FRONT_PORT  #左前轮 正负输出，这两个输出互斥，不能同时为正，但可以同时为负，不管同时为正或负，都视为刹车；

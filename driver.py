@@ -8,7 +8,7 @@ import threading
 from ultrasonic import Ultrasonic
 import logging
 
-logging.basicConfig(format='%(asctime)s  - %(levelname)s:%(message)s', level=logging.DEBUG)
+logging.basicConfig(format='%(asctime)s  - %(levelname)s:%(message)s', level=logging.INFO)
 logging.getLogger().setLevel(logging.INFO)
 # logging.basicConfig(filename='example.log', encoding='utf-8', level=logging.DEBUG)
 # logging.debug('This message should go to the log file')
@@ -38,7 +38,7 @@ class UltrasonicThread(threading.Thread):
         sonic = Ultrasonic(17, 27)
         while True:
             dis = sonic.get_distance()
-            if (dis < 2):
+            if (dis < 5 and dis > 0 ):
                 order.setting()
             time.sleep(1)
 

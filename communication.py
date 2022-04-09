@@ -20,12 +20,10 @@ class mqutils:
     def receive(self,name,orderOpt):
         redisSev = self.instance;
         while True:
-            if redisSev.llen(name) == 0 :
+            if redisSev.llen(name) == 0:
                 sleep(0.5)
                 continue
             # 收到指令后反序列化字符串，之所以是反序列化，因为服务端使用的StringRedisSerializer器，我懒得改别的类型了。╭(╯^╰)╮
-            order =  str(redisSev.rpop(name), encoding = "utf-8")
-            logging.info(" <')))><<} ---[收到指令]:",order)
-            status  = orderOpt.opt(order)
-            if status == 0 :
-                break
+            order =str(redisSev.rpop(name), encoding="utf-8")
+            logging.info("[收到指令]:", order)
+            orderOpt.opt(order)
