@@ -41,8 +41,8 @@ class Ultrasonic:
         return distance
 
 
-def test():
-    test = Ultrasonic(17,27)
-    logging.info(test.get_distance())
-    pass
-test()
+# def test():
+#     test = Ultrasonic(17,27)
+#     logging.info(test.get_distance())
+#     pass
+# test()

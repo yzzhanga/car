@@ -18,7 +18,7 @@ logging.getLogger().setLevel(logging.INFO)
 # 加载指令集
 order = L298nOrder([26, 19], [13, 10], [21, 20], [16, 12])
 redis = mqutils(host='mq.yzzhanga.xyz', port=46379, password='1qaz2wsx', db=0)
-
+logging.info("驱动开始执行")
 class OrderThread(threading.Thread):
     def __init__(self):
         threading.Thread.__init__(self)
@@ -51,5 +51,5 @@ def main():
     # ultrasonicThread = UltrasonicThread()
     # ultrasonicThread.start()
 
-if __name__ == '__main__':
-    main()
+# if __name__ == '__main__':
+main()
