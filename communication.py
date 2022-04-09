@@ -25,5 +25,5 @@ class mqutils:
                 continue
             # 收到指令后反序列化字符串，之所以是反序列化，因为服务端使用的StringRedisSerializer器，我懒得改别的类型了。╭(╯^╰)╮
             order =str(redisSev.rpop(name), encoding="utf-8")
-            logging.info("[收到指令]:", order)
+            logging.info("[收到指令]:%s", order)
             orderOpt.opt(order)

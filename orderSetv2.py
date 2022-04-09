@@ -149,8 +149,8 @@ class L298nOrder:
         if (_inputOrder == "f"):
             self.turn_of_rear_axis()
         return retval
-
-def test():
-     order = L298nOrder((14,11,),(25,26),(13,15),(24,26))
-     order.left_concerning()
-test()
+#
+# def test():
+#      order = L298nOrder((14,11,),(25,26),(13,15),(24,26))
+#      order.left_concerning()
+# test()

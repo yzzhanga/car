@@ -23,7 +23,7 @@ class OrderThread(threading.Thread):
     def __init__(self):
         threading.Thread.__init__(self)
         redis.connection()
-        logging.info("指令接收线程初始化完成")
+        logging.info("指令接收线程初始化完成 %s",redis)
 
     def run(self):
         logging.info("指令接收线程开始运行")
@@ -48,8 +48,8 @@ def main():
     orderThread = OrderThread()
     orderThread.start()
 
-    ultrasonicThread = UltrasonicThread()
-    ultrasonicThread.start()
+    # ultrasonicThread = UltrasonicThread()
+    # ultrasonicThread.start()
 
 if __name__ == '__main__':
     main()
